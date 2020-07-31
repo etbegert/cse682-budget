@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CSE682Final</string>
+    <string name="ndopen">Open</string>
+    <string name="ndclose">Close</string>
+</resources>
