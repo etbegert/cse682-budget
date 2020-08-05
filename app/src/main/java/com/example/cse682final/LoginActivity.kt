@@ -1,4 +1,4 @@
-package com.example.cis651_finalproject
+package com.example.cse682final
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.cse682final.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -76,10 +77,4 @@ class LoginActivity : AppCompatActivity(){
 
     }
 
-    /*private fun updateUI() {
-        if(currentUser != null) {
-            findViewById<TextInputLayout>(R.id.display_name_layout).visibility = View.GONE
-            signUpButton.visibility = View.GONE
-        }
-    }*/
 }

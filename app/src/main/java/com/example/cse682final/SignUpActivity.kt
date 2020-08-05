@@ -1,4 +1,4 @@
-package com.example.cis651_finalproject
+package com.example.cse682final
 
 import android.content.ContentResolver
 import android.content.ContentValues
@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.cse682final.R
+import com.example.cse682final.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference

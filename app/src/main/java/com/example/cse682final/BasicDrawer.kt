@@ -1,4 +1,4 @@
-package com.example.cis651_finalproject
+package com.example.cse682final
 
 import android.Manifest
 import android.app.Activity
@@ -29,8 +29,6 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     private var drawerLayout: DrawerLayout? = null
     private var bottomNavigationView : BottomNavigationView? = null
     private val currentUser = FirebaseAuth.getInstance().currentUser
-
-    //private val localFragment = LocalFragment()
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -65,38 +63,6 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        /*TODO update fragment navigation when (item.itemId) {
-            R.id.local_button -> {
-                supportActionBar!!.title = "Local Area Feed"
-                loadFragment(R.id.fragment_container, localFragment, "local")
-            }
-            R.id.map_button -> {
-                supportActionBar!!.title = "Local Area Map"
-                loadFragment(R.id.fragment_container, mapsFragment, "maps")
-            }
-            R.id.search_button -> {
-                supportActionBar!!.title = "Search"
-                loadFragment(R.id.fragment_container, searchFragment, "search")
-            }
-            R.id.profile -> {
-                supportActionBar!!.title = "Profile"
-                val bundle = Bundle()
-                bundle.putString("uid", currentUser!!.uid)
-                profileFragment.arguments = bundle
-                loadFragment(R.id.fragment_container, profileFragment, "profile")
-            }
-
-            R.id.settings -> {
-                supportActionBar!!.title = "Settings"
-                loadFragment(R.id.fragment_container, settingsFragment, "settings")
-            }
-
-            R.id.about_app -> {
-                supportActionBar!!.title = "About"
-                loadFragment(R.id.fragment_container, aboutFragment,"about")
-            }
-        }*/
         drawerLayout!!.closeDrawers()
         return true
     }

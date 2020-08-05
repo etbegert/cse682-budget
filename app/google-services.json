@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "567544130563",
+    "firebase_url": "https://cse682-final.firebaseio.com",
+    "project_id": "cse682-final",
+    "storage_bucket": "cse682-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567544130563:android:9966556c881df7e29df236",
+        "android_client_info": {
+          "package_name": "com.example.cse682final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567544130563-dn7jc0i7n8sj2r83l2go9mvsrpq7vpl1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPzhZFq6OwKdeCxkgdkFW6Jxrq9TYIgZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567544130563-dn7jc0i7n8sj2r83l2go9mvsrpq7vpl1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
