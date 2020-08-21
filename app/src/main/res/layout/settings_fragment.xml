@@ -41,11 +41,5 @@
         android:layout_height="wrap_content"
         android:text="Sign Out"/>
 
-    <Switch
-        android:id="@+id/units"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Miles/Kilometers" />
-
 
 </LinearLayout>

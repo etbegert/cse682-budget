@@ -1,8 +1,10 @@
 package com.example.cse682final
 
-import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,10 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.cse682final.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -23,12 +23,17 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlin.system.exitProcess
 
+
 open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var navigationView: NavigationView? = null
     private var drawerLayout: DrawerLayout? = null
     private var bottomNavigationView : BottomNavigationView? = null
     private val currentUser = FirebaseAuth.getInstance().currentUser
+    private val summaryFragment = SummaryFragment()
+    private val expendatureFragment = ExpendatureFragment()
+    private val reportFragment = ReportFragment()
+    private val settingsFragment = SettingsFragment ()
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -57,12 +62,29 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         actionBarDrawerToggle.syncState()
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // TODO update icon supportActionBar?.setHomeAsUpIndicator(R.drawable.martini_glass) //Attributed to FreePik on flaticon.com
+        val drawable = resources.getDrawable(R.drawable.money_sign,null)
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val newdrawable: Drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, 50, 50, true))
+        supportActionBar?.setHomeAsUpIndicator(newdrawable) //Attributed to FreePik on flaticon.com
         supportActionBar!!.title = "Summary"
-        //TODO update fragment load loadFragment(R.id.fragment_container, localFragment, "local")
+        loadFragment(R.id.fragment_container,summaryFragment, "summary")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)
+        {
+            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment, "summary")
+
+            R.id.exp_button -> loadFragment(R.id.fragment_container,expendatureFragment, "expendature")
+
+            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "report")
+
+            R.id.settings -> {
+                supportActionBar!!.title = "Settings"
+                loadFragment(R.id.fragment_container, settingsFragment, "settings")
+            }
+
+        }
         drawerLayout!!.closeDrawers()
         return true
     }
@@ -82,12 +104,5 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
             }
         }
     }
-    companion object {
-        public fun checkLocationPermissions(activity:Activity) {
-            ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION), 1
-            )
 
-        }
-    }
 }

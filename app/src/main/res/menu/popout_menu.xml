@@ -4,13 +4,8 @@
     <group>
 
         <item
-            android:id="@+id/profile"
-            android:title="Profile" />
-        <item
             android:id="@+id/settings"
             android:title="Settings" />
-        <item
-            android:id="@+id/about_app"
-            android:title="About" />
+
     </group>
 </menu>
