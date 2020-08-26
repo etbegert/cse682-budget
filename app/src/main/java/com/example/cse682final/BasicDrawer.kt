@@ -1,7 +1,6 @@
 package com.example.cse682final
 
 import android.content.pm.PackageManager
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -31,7 +30,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     private var bottomNavigationView : BottomNavigationView? = null
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private val summaryFragment = SummaryFragment()
-    private val expendatureFragment = ExpendatureFragment()
+    private val expendatureFragment = ExpenditureFragment()
     private val reportFragment = ReportFragment()
     private val settingsFragment = SettingsFragment ()
 

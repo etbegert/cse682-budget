@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="411dp"
+        android:layout_height="7dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="566dp" />
+
+    <TextView
+        android:id="@+id/expEntryTitle"
+        android:layout_width="296dp"
+        android:layout_height="25dp"
+        android:text="Enter New Expenditure"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="583dp" />
+
+    <TextView
+        android:id="@+id/expTotalRemaining"
+        android:layout_width="107dp"
+        android:layout_height="18dp"
+        tools:layout_editor_absoluteX="288dp"
+        tools:layout_editor_absoluteY="690dp" />
+
+    <TextView
+        android:id="@+id/expTotalExpenditures"
+        android:layout_width="107dp"
+        android:layout_height="18dp"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="690dp" />
+
+    <TextView
+        android:id="@+id/expTotalIncome"
+        android:layout_width="107dp"
+        android:layout_height="18dp"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="690dp" />
+
+    <Button
+        android:id="@+id/expEntrySubmit"
+        android:layout_width="87dp"
+        android:layout_height="47dp"
+        android:text="Submit"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="611dp" />
+
+    <EditText
+        android:id="@+id/expEntry"
+        android:layout_width="211dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="612dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expenditureRecycler"
+        android:layout_width="415dp"
+        android:layout_height="565dp"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
