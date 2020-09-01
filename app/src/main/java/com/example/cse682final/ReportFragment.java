@@ -1,6 +1,7 @@
 package com.example.cse682final;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,6 +28,7 @@ public class ReportFragment extends Fragment {
     public interface OnItemSelectedListener{
         public void onListItemSelected(View sharedView, int imageResourceID, String title, String year, Float rating, String description);
     }
+    private final int NEW_REPORT_ACTIVITY = 13;
     OnItemSelectedListener clickListener;
     private final MyRecyclerAdapter myRecyclerAdaptor=new MyRecyclerAdapter(reports);
     @Override
@@ -40,6 +45,15 @@ public class ReportFragment extends Fragment {
         rv.setAdapter(myRecyclerAdaptor);
         rv.setItemAnimator((new DefaultItemAnimator()));
 
+        FloatingActionButton fab = rootView.findViewById(R.id.reportFAB);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newReport = new Intent(getContext(), NewReportActivity.class);
+                startActivityForResult(newReport,NEW_REPORT_ACTIVITY);
+            }
+        });
+
         return rootView;
     }
     public void onAttach(@NotNull Context context){
@@ -52,5 +66,6 @@ public class ReportFragment extends Fragment {
        // {
         //    throw new ClassCastException(context.toString()+"must implement EventTraack");
        // }
+
     }
 }

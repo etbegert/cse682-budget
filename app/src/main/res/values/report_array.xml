@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reports_array">
+        <item>Percent of Income on Bills</item>
+        <item>Percent of Income on Spending</item>
+        <item>Savings Projection</item>
+    </string-array>
+</resources>
