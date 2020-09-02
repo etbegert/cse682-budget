@@ -2,8 +2,8 @@ package com.example.cse682final
 
 class AccountInfo {
     var income = 0
-    var expenditureList = ArrayList<Int>()
-    var savingsList = HashMap<String, Int>()
+    var expenditureList = ArrayList<Float>()
+    var savingsList = HashMap<String, Float>()
     var autoReportsList = HashMap<String, Int>()
     var alerts = ArrayList<String>()
 
@@ -13,22 +13,23 @@ class AccountInfo {
     }
 
     // Add the user's expenditure
-    public fun addExpenditure(expendList: ArrayList<Int>){
-        this.expenditureList = expendList
+    public fun addExpenditure(expend: Float){
+        this.expenditureList.add(expend)
     }
 
     // Add the user's savings
-    public fun addSavings (saveList: HashMap<String, Int>){
-        this.savingsList = saveList
+    public fun addSavings (savingName: String, saving: Float){
+        this.savingsList.put(savingName, saving)
     }
 
     // Add the user's alerts
-    public fun addAlerts(alertsList: ArrayList<String>) {
+    @JvmName("setAlerts1")
+    public fun setAlerts(alertsList: ArrayList<String>) {
         this.alerts = alertsList
     }
 
     // Add the user's auto reports
-    public fun addAutoReports(autoReports: HashMap<String, Int>) {
+    public fun setAutoReports(autoReports: HashMap<String, Int>) {
         this.autoReportsList = autoReports
     }
 
@@ -39,12 +40,12 @@ class AccountInfo {
     }
 
     // Get the user's expenditures
-    public fun getExpenditure(): ArrayList<Int> {
+    public fun getExpenditure(): ArrayList<Float> {
         return expenditureList
     }
 
     // Get the user's savings
-    public fun getSavings(): HashMap<String, Int> {
+    public fun getSavings(): HashMap<String, Float> {
         return savingsList
     }
 
