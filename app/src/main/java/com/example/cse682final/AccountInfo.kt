@@ -12,12 +12,12 @@ class AccountInfo(var income: Int) {
     }
 
     // Add the user's expenditure
-    fun addExpenditure(expend: Float){
+    fun addExpenditure(expend: Float) {
         this.expenditureList.add(expend)
     }
 
     // Add the user's savings
-    fun addSavings (savingName: String, saving: Float){
+    fun addSavings(savingName: String, saving: Float) {
         this.savingsList.put(savingName, saving)
     }
 
@@ -43,9 +43,9 @@ class AccountInfo(var income: Int) {
         return expenditureList
     }
 
-    // Get the user's savings
-    fun getSavings(): HashMap<String, Float> {
-        return savingsList
+
+    companion object {
+        lateinit var reports: MutableList<MutableMap<String, *>>
     }
 
     // Get the user's alerts

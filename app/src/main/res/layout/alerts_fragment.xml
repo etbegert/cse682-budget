@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="204dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
         <RadioGroup
             android:id="@+id/AlertGroup1"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck1"
@@ -35,19 +36,19 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint=""/>
+                android:hint="" />
 
         </RadioGroup>
 
         <RadioGroup
             android:id="@+id/AlertGroup2"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AlertGroup1"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck2"
@@ -78,13 +79,13 @@
 
         <RadioGroup
             android:id="@+id/AlertGroup3"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AlertGroup2"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck3"
@@ -115,13 +116,13 @@
 
         <RadioGroup
             android:id="@+id/AlertGroup4"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AlertGroup3"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck4"
@@ -152,13 +153,13 @@
 
         <RadioGroup
             android:id="@+id/AlertGroup5"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AlertGroup4"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck5"
@@ -189,13 +190,13 @@
 
         <RadioGroup
             android:id="@+id/AlertGroup6"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AlertGroup5"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck6"
@@ -226,13 +227,13 @@
 
         <RadioGroup
             android:id="@+id/AlertGroup7"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="2dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/AlertGroup6"
-            app:layout_constraintLeft_toLeftOf="parent">
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <CheckBox
                 android:id="@+id/AlertCheck7"
@@ -264,15 +265,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/Alert Types"
+        android:id="@+id/Alert_Types"
         android:layout_width="318dp"
         android:layout_height="36dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="213dp"
         android:text="Alert Types"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="213dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
