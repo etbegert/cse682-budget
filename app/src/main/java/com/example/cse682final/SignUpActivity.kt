@@ -2,7 +2,6 @@ package com.example.cse682final
 
 import android.content.ContentResolver
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -10,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -19,15 +17,12 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.cse682final.R
-import com.example.cse682final.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.login_activity.*
 import java.util.*
 
 class SignUpActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
@@ -38,6 +33,7 @@ class SignUpActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private var storage: FirebaseStorage? = null
     private var imageUID: String? = null
     private var uri: Uri? = null
+    public var income: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,7 +100,8 @@ class SignUpActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                     imageUID!!,
                     uri!!,
                     currentUser?.uid!!.toString(),
-                    checks
+                    checks,
+                    income
                 )
             )
             HelperFunctions.uploadImage("profile_pictures", imageUID, uri)
