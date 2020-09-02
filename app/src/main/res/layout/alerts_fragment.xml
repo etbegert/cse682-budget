@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <RadioGroup
+            android:id="@+id/AlertGroup1"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="2dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint=""/>
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/AlertGroup2"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintTop_toBottomOf="@id/AlertGroup1"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="34dp" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup2B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup2B2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup2B3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/AlertGroup3"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintTop_toBottomOf="@id/AlertGroup2"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="66dp" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup3B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup3B2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup3B3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/AlertGroup4"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintTop_toBottomOf="@id/AlertGroup3"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup4B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup4B2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup4B3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/AlertGroup5"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintTop_toBottomOf="@id/AlertGroup4"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="130dp" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup5B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup5B2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup5B3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/AlertGroup6"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintTop_toBottomOf="@id/AlertGroup5"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="162dp" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup6B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup6B2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup6B3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/AlertGroup7"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="2dp"
+            app:layout_constraintTop_toBottomOf="@id/AlertGroup6"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <CheckBox
+                android:id="@+id/AlertCheck7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="194dp" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup7B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daily" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup7B2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/AlertGroup7B3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/Alert Types"
+        android:layout_width="318dp"
+        android:layout_height="36dp"
+        android:text="Alert Types"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="213dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
