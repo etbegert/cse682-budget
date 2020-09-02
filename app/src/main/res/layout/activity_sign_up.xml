@@ -96,62 +96,6 @@
                 android:hint="Income" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="What are your interests?"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/signup_top_checks"
-        android:layout_marginBottom="10dp"/>
-    <LinearLayout
-        android:id="@+id/signup_top_checks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/text_holder_signup"
-        app:layout_constraintBottom_toTopOf="@id/signup_cancel_button">
-        <CheckBox
-            android:id="@+id/signup_interest_bars"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bars"/>
-        <CheckBox
-            android:id="@+id/signup_interest_clubs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clubs"/>
-        <CheckBox
-            android:id="@+id/signup_interest_restaurants"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Restaurants"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/signup_bottom_checks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/signup_top_checks">
-        <CheckBox
-            android:id="@+id/signup_interest_diners"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diners"/>
-        <CheckBox
-            android:id="@+id/signup_interest_driveins"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drive-ins"/>
-        <CheckBox
-            android:id="@+id/signup_interest_gastropubs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gastropubs"/>
-    </LinearLayout>
 
     <Button
         android:id="@+id/create_account_button"
