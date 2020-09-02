@@ -1,15 +1,13 @@
 package com.example.cse682final
 
 import android.content.Context
-import android.content.Intent
-import android.content.IntentSender
 import android.os.Bundle
-import com.example.cse682final.R
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.tasks.Task
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.fragment.app.Fragment
 
 
-class MainActivity : BasicDrawer() {
+class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
 
     companion object{
         var mContext: Context? = null
@@ -20,10 +18,35 @@ class MainActivity : BasicDrawer() {
         mContext = this
         setContentView(R.layout.activity_main)
         super.onCreateDrawer()
+        AccountInfo.reports = ArrayList()
     }
 
     override fun onRestart() {
         super.onRestart()
+    }
+
+    override fun onListItemSelected(
+        shardeView: View,
+        income: String,
+        date: String,
+        type: String,
+        line1: String,
+        line2: String,
+        line3: String
+    ){
+        val args = Bundle()
+        args.putString("income", income)
+        args.putString("date", date)
+        args.putString("type", type)
+        args.putString("line1", line1)
+        args.putString("line2", line2)
+        args.putString("line3", line3)
+        val rf: Fragment = ReportFragment()
+        rf.arguments = args
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, rf)
+            .addToBackStack(null).commit()
+
     }
 
 }

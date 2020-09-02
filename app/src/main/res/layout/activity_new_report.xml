@@ -49,6 +49,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:onClick="createReport"
+        android:onClick="assignReport"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

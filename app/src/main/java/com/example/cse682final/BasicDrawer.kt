@@ -31,7 +31,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private val summaryFragment = SummaryFragment()
     private val expendatureFragment = ExpenditureFragment()
-    private val reportFragment = ReportFragment()
+    private val reportFragment = ReportListFragment()
     private val settingsFragment = SettingsFragment ()
 
     fun onCreateDrawer() {
