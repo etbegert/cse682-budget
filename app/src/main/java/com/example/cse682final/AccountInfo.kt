@@ -1,10 +1,21 @@
 package com.example.cse682final
 
-class AccountInfo(var income: Int) {
+class AccountInfo(inc: Int) {
+    var income = inc
     var expenditureList = ArrayList<Float>()
+    var expenditureTotal : Float = 0F
     var savingsList = HashMap<String, Float>()
     var autoReportsList = HashMap<String, Int>()
     var alerts = ArrayList<String>()
+
+    fun AccountInfo(inc: Int, expenditures: ArrayList<Float>, expendTotal: Float, savings: HashMap<String, Float>, autoReports: HashMap<String, Int>, alertsList: ArrayList<String>) {
+        this.income = inc
+        this.expenditureList = expenditures
+        this.expenditureTotal = expendTotal
+        this.savingsList = savings
+        this.autoReportsList = autoReports
+        this.alerts = alertsList
+    }
 
     // Set the user's income
     fun accountInfo(userIncome: Int) {
@@ -14,6 +25,8 @@ class AccountInfo(var income: Int) {
     // Add the user's expenditure
     fun addExpenditure(expend: Float) {
         this.expenditureList.add(expend)
+        this.expenditureTotal += expend
+
     }
 
     // Add the user's savings
@@ -38,8 +51,12 @@ class AccountInfo(var income: Int) {
         return income
     }
 
-    // Get the user's expenditures
-    fun getExpenditure(): ArrayList<Float> {
+    // Get a specific expenditure
+    fun getExpenditure(position: Int): Float {
+        return expenditureList.get(position)
+    }
+
+    fun getExpenditures(): ArrayList<Float> {
         return expenditureList
     }
 

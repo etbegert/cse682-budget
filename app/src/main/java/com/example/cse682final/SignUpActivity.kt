@@ -70,7 +70,7 @@ class SignUpActivity : AppCompatActivity() {
                 display_name_signup.text.toString(),
                 email_signup.text.toString(),
                 currentUser?.uid!!.toString(),
-                AccountInfo(income_amount_signup.text as Int)
+                AccountInfo(income_amount_signup.text.toString().toInt())
             ))
         }
 }
