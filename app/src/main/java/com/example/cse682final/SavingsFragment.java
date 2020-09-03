@@ -16,18 +16,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ReportListFragment extends Fragment {
+public class SavingsFragment extends Fragment {
 
-    public interface OnItemSelectedListener{
-        public void onListItemSelected(View sharedView, String income,String date,String type,String line1,String line2,String line3);
-    }
-    private final int NEW_REPORT_ACTIVITY = 13;
-    OnItemSelectedListener clickListener;
-    private final ReportsAdapter myRecyclerAdaptor=new ReportsAdapter(AccountInfo.reports);
+    private final int NEW_SAVINGS_ACTIVITY = 13;
+    private final SavingsAdapter myRecyclerAdaptor=new SavingsAdapter(AccountInfo.savings);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView=inflater.inflate(R.layout.report_list_fragment,container,false);
+        View rootView=inflater.inflate(R.layout.savings_fragment,container,false);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
@@ -38,33 +34,24 @@ public class ReportListFragment extends Fragment {
         rv.setAdapter(myRecyclerAdaptor);
         rv.setItemAnimator((new DefaultItemAnimator()));
 
-        FloatingActionButton fab = rootView.findViewById(R.id.reportFAB);
+        FloatingActionButton fab = rootView.findViewById(R.id.savingsFAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent newReport = new Intent(getContext(), NewReportActivity.class);
-                startActivityForResult(newReport,NEW_REPORT_ACTIVITY);
+                Intent newSavings = new Intent(getContext(), NewSavingsActivity.class);
+                startActivityForResult(newSavings,NEW_SAVINGS_ACTIVITY);
             }
         });
-        myRecyclerAdaptor.updateList(AccountInfo.reports);
+        myRecyclerAdaptor.updateList(AccountInfo.savings);
 
         return rootView;
     }
     public void onAttach(@NotNull Context context){
         super.onAttach(context);
-        try {
-            clickListener=(OnItemSelectedListener)context;
-            myRecyclerAdaptor.setOnListItemClickListener(clickListener);
-        }
-        catch (ClassCastException ex)
-        {
-            throw new ClassCastException(context.toString()+"must implement EventTraack");
-        }
-
     }
     @Override
     public void onResume() {
-        myRecyclerAdaptor.updateList(AccountInfo.reports);
+        myRecyclerAdaptor.updateList(AccountInfo.savings);
         super.onResume();
     }
 

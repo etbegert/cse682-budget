@@ -33,6 +33,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     private val expendatureFragment = ExpenditureFragment()
     private val reportFragment = ReportListFragment()
     private val settingsFragment = SettingsFragment ()
+    private val savingsFragment = SavingsFragment()
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -77,6 +78,8 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
             R.id.exp_button -> loadFragment(R.id.fragment_container,expendatureFragment, "expendature")
 
             R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "report")
+
+            R.id.save_button -> loadFragment(R.id.fragment_container,savingsFragment, "savings")
 
             R.id.settings -> {
                 supportActionBar!!.title = "Settings"

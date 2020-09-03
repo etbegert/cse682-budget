@@ -3,8 +3,8 @@ package com.example.cse682final
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
@@ -19,6 +19,8 @@ class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
         setContentView(R.layout.activity_main)
         super.onCreateDrawer()
         AccountInfo.reports = ArrayList()
+        AccountInfo.savings = ArrayList()
+
     }
 
     override fun onRestart() {

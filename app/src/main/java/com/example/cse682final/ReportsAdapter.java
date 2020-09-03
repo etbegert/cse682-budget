@@ -1,23 +1,21 @@
 package com.example.cse682final;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import java.util.Map;
 
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.ViewHolder>{
+public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHolder>{
 
     private List<Map<String, ?>> reports;
     private ReportListFragment.OnItemSelectedListener clickListener=null;
     private ReportFragment rf = new ReportFragment();
-    public MyRecyclerAdapter(List<Map<String, ?>> list)
+    public ReportsAdapter(List<Map<String, ?>> list)
     {
         reports=list;
     }
@@ -46,7 +44,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         return view_holder;
     }
     @Override
-    public void onBindViewHolder(final MyRecyclerAdapter.ViewHolder holder,final int position)
+    public void onBindViewHolder(final ReportsAdapter.ViewHolder holder, final int position)
     {
         String name = "Report " + position;
         holder.report_name.setText(name);

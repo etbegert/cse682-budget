@@ -6,19 +6,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:title="Summary"
-        app:showAsAction="always"/>
+        app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/exp_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Expenditure"
-        app:showAsAction="always"/>
+        android:title="Expenditures"
+        app:showAsAction="always|withText"/>
+    <item
+        android:id="@+id/save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Savings"
+        app:showAsAction="always|withText"/>
 
     <item
         android:id="@+id/report_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Report"
-        app:showAsAction="always"/>
+        android:title="Reports"
+        app:showAsAction="always|withText" />
 </menu>

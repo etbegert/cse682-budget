@@ -44,8 +44,9 @@ class AccountInfo(var income: Int) {
     }
 
 
-    companion object {
+    companion object { //TODO: These will go away
         lateinit var reports: MutableList<MutableMap<String, *>>
+        lateinit var savings: MutableList<MutableMap<String, *>>
     }
 
     // Get the user's alerts

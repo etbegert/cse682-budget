@@ -14,6 +14,11 @@
             android:label="@string/title_activity_new_report"
             android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert">
         </activity>
+        <activity
+            android:name=".NewSavingsActivity"
+            android:label="@string/title_activity_new_savings"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog.Alert">
+        </activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

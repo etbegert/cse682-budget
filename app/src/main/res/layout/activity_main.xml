@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.cis651_finalproject.MainActivity">
+    tools:context="com.example.cse682final.MainActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
