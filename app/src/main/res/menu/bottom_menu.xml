@@ -5,6 +5,7 @@
         android:id="@+id/summary_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:icon="@drawable/paper"
         android:title="Summary"
         app:showAsAction="always|withText" />
 
@@ -12,19 +13,22 @@
         android:id="@+id/exp_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:icon="@drawable/cc"
         android:title="Expenditures"
-        app:showAsAction="always|withText"/>
+        app:showAsAction="always|withText" />
     <item
         android:id="@+id/save_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:icon="@drawable/piggy_bank"
         android:title="Savings"
-        app:showAsAction="always|withText"/>
+        app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/report_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:icon="@drawable/ff"
         android:title="Reports"
         app:showAsAction="always|withText" />
 </menu>

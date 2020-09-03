@@ -1,5 +1,8 @@
 package com.example.cse682final;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +42,15 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
     public void onBindViewHolder(final SavingsAdapter.ViewHolder holder, final int position)
     {
         holder.savings_name.setText(savings.get(position).get("name").toString());
+        holder.savings_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.mContext,EditSavingsActivity.class);
+                myIntent.putExtra("amount",holder.savings_amount.getText().toString());
+                myIntent.putExtra("position",position);
+                MainActivity.mContext.startActivity(myIntent);
+            }
+        });
         holder.savings_amount.setText(savings.get(position).get("amount").toString());
      }
     public void updateList(List<Map<String, ?>> postList) {

@@ -27,7 +27,7 @@ public class NewSavingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_savings);
     }
 
-    public void assignReport(View v)
+    public void assignSavings(View v)
     {
         EditText savingsName = (EditText) findViewById(R.id.savings_name);
         EditText savingsAmount = (EditText) findViewById(R.id.savings_amount);

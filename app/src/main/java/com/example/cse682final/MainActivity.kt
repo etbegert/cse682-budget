@@ -10,7 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
 
     companion object{
-        var mContext: Context? = null
+        lateinit var mContext: Context
     }
     val REQUEST_CHECK_SETTINGS = 0x1
     override fun onCreate(savedInstanceState: Bundle?) {

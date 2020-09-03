@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="New Savings"
+        android:text="Edit Savings"
         android:textSize="26sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -18,23 +18,10 @@
         android:textColor="@android:color/black"/>
 
     <EditText
-        android:id="@+id/savings_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/new_savings_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@android:color/black"
-        android:hint="Savings Account Name"
-        android:textSize="16sp"/>
-
-    <EditText
         android:id="@+id/savings_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/savings_name"
+        app:layout_constraintTop_toBottomOf="@id/new_savings_title"
         app:layout_constraintLeft_toLeftOf="parent"
         android:hint="Savings Account Balance"
         android:layout_marginTop="10dp"
@@ -44,12 +31,12 @@
         android:id="@+id/submit_post_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Savings Account"
+        android:text="Save Amount"
         app:layout_constraintTop_toBottomOf="@id/savings_amount"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:onClick="assignSavings"
+        android:onClick="editSavings"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
