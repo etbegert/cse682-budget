@@ -23,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth
 class SettingsFragment : Fragment() {
 
     private lateinit var v : View
-    var searchRadius = 25
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

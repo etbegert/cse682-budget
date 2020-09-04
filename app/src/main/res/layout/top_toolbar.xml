@@ -4,6 +4,8 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@android:color/black"
     android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:titleTextColor="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 </androidx.appcompat.widget.Toolbar>

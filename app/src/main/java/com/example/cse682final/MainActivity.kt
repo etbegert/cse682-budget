@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -11,6 +12,7 @@ class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
 
     companion object{
         lateinit var mContext: Context
+        lateinit var fragmentManager: FragmentManager
     }
     val REQUEST_CHECK_SETTINGS = 0x1
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +22,6 @@ class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
         super.onCreateDrawer()
         AccountInfo.reports = ArrayList()
         AccountInfo.savings = ArrayList()
-
     }
 
     override fun onRestart() {

@@ -29,7 +29,7 @@ public class EditSavingsActivity extends AppCompatActivity {
     public void editSavings(View v)
     {
         EditText savingsAmount = (EditText) findViewById(R.id.savings_amount);
-        String amount = "$" + savingsAmount.getText().toString();
+        String amount = "$" + savingsAmount.getText().toString().replaceAll("[^\\d.]", "");
         HashMap<String, Serializable> account = new HashMap<>();
         account.put("name",AccountInfo.savings.get(position).get("name").toString());
         account.put("amount",amount);

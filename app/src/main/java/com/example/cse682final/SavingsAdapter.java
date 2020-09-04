@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +25,12 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView savings_name;
         public TextView savings_amount;
+        public ImageButton delete_button;
         public ViewHolder (View view){
             super(view);
             savings_name = (TextView)view.findViewById(R.id.savings_name);
             savings_amount = (TextView)view.findViewById(R.id.savings_amount);
+            delete_button = (ImageButton)view.findViewById(R.id.delete_button);
         }
     }
 
@@ -51,11 +54,23 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
                 MainActivity.mContext.startActivity(myIntent);
             }
         });
-        holder.savings_amount.setText(savings.get(position).get("amount").toString());
+        holder.savings_amount.setText("$"+String.format("%,.2f",Float.parseFloat(savings.get(position).get("amount").toString().replace("$",""))));
+        holder.delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savings.remove(position);
+                updateList(savings);
+            }
+        });
      }
     public void updateList(List<Map<String, ?>> postList) {
         this.savings = postList;
+        SavingsFragment savingsFragment = (SavingsFragment) MainActivity.fragmentManager.findFragmentByTag("Savings");
+        if (savingsFragment != null && savingsFragment.isVisible()) {
+            savingsFragment.updateTotal();
+        }
         notifyDataSetChanged();
+
     }
 
     @Override

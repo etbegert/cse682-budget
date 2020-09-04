@@ -7,33 +7,14 @@
     android:padding="10sp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SettingsFragment"
-    android:theme="@style/AppTheme"
-    android:background="@color/cardview_dark_background">
+    android:theme="@style/Theme.AppCompat.DayNight.Dialog">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Settings"
+        android:text=""
         android:textSize="25sp"/>
-
-    <!--<com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/dark_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dark_mode"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search_radius" />
-
-    <EditText
-        android:id="@+id/search_radius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="25"
-        android:autofillHints="10, 25, 50, 100"/>-->
 
     <Button
         android:id="@+id/sign_out_button"

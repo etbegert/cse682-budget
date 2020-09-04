@@ -32,9 +32,17 @@
                 android:layout_width="0dp"
                 android:layout_weight="4"
                 android:layout_height="match_parent"
-                android:textAlignment="textEnd"
+                android:textAlignment="center"
                 android:id="@+id/report_type">
             </TextView>
+            <ImageButton
+                android:id="@+id/delete_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight=".002"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@android:drawable/ic_delete">
+            </ImageButton>
         </LinearLayout>
 
 </androidx.cardview.widget.CardView>

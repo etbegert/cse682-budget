@@ -31,7 +31,9 @@ public class NewSavingsActivity extends AppCompatActivity {
     {
         EditText savingsName = (EditText) findViewById(R.id.savings_name);
         EditText savingsAmount = (EditText) findViewById(R.id.savings_amount);
-        String amount = "$" + savingsAmount.getText().toString();
+        String amount = "$" + savingsAmount.getText().toString().replaceAll("[^\\d.]", "");
+        if (amount.equals("$"))
+            amount = "0";
         AccountInfo.savings.add(createSavings(savingsName.getText().toString(),amount));
         finish();
     }

@@ -45,6 +45,7 @@ class AccountInfo(var income: Int) {
 
 
     companion object { //TODO: These will go away
+        lateinit var savingsTotal: Integer
         lateinit var reports: MutableList<MutableMap<String, *>>
         lateinit var savings: MutableList<MutableMap<String, *>>
     }

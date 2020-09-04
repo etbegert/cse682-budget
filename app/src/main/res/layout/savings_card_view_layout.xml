@@ -11,23 +11,33 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:weightSum="2"
+            android:weightSum="1"
             android:paddingEnd="4dp"
             android:paddingStart="4dp">
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight=".499"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
+                android:gravity="center_vertical"
                 android:id="@+id/savings_name">
             </TextView>
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight=".499"
                 android:layout_height="match_parent"
-                android:textAlignment="textStart"
+                android:gravity="center_vertical"
                 android:id="@+id/savings_amount">
             </TextView>
+
+            <ImageButton
+                android:id="@+id/delete_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight=".002"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@android:drawable/ic_delete">
+            </ImageButton>
+
         </LinearLayout>
 
 </androidx.cardview.widget.CardView>

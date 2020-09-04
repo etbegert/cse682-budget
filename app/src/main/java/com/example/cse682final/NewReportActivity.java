@@ -70,8 +70,8 @@ public class NewReportActivity extends AppCompatActivity {
         float tip1 = ((percentage/2)/100)*(income/12);
         float tip2 = ((percentage/4)/100)*(income/12);
         String line1 = "Percentage of income spent on bills monthly: " + String.format("%.2f", percentage) + "%";
-        String line2 = "Amount spent on bills if percentage is halved: $" + String.format("%.2f", tip1);
-        String line3 = "Amount spent on bills if percentage is quartered: $" + String.format("%.2f", tip2);
+        String line2 = "Amount spent on bills if percentage is halved: $" + String.format("%,.2f", tip1);
+        String line3 = "Amount spent on bills if percentage is quartered: $" + String.format("%,.2f", tip2);
         AccountInfo.reports.add(createReport("Income to Bills", line1, line2, line3));
     }
     private void genIncomeExpend()
@@ -80,19 +80,23 @@ public class NewReportActivity extends AppCompatActivity {
         float tip1 = ((percentage/2)/100)*(income/12);
         float tip2 = ((percentage/4)/100)*(income/12);
         String line1 = "Percentage of income spent on expenditures monthly: " + String.format("%.2f", percentage) + "%";
-        String line2 = "Amount spent on expenditures if percentage is halved: $" + String.format("%.2f", tip1);
-        String line3 = "Amount spent on expenditures if percentage is quartered: $" + String.format("%.2f", tip2);
+        String line2 = "Amount spent on expenditures if percentage is halved: $" + String.format("%,.2f", tip1);
+        String line3 = "Amount spent on expenditures if percentage is quartered: $" + String.format("%,.2f", tip2);
         AccountInfo.reports.add(createReport("Income to Expenditure", line1, line2, line3));
     }
     private void genSavings()
     {
-        AccountInfo.reports.add(createReport("Savings Projection", "Line 1", "Line 2", "Line 3"));
+        float tip1 = (float) ((income * .1) + AccountInfo.savingsTotal);
+        float tip2 = (float) ((income * .2) + AccountInfo.savingsTotal);
+        String line1 = "Your total savings will be a balance of $" + String.format("%,.2f", tip1) + " in one year if 10% of income is saved";
+        String line2 = "Your total savings will be a balance of $" + String.format("%,.2f", tip2) + " in one year if 20% of income is saved";
+        AccountInfo.reports.add(createReport("Savings Projection", line1, line2, ""));
     }
     private HashMap<String, Serializable> createReport(String type, String line1, String line2, String line3) {
         HashMap<String, java.io.Serializable> report = new HashMap<>();
         report.put("type",type);
         report.put("date", date);
-        report.put("income",String.format("%.2f", income));
+        report.put("income",String.format("%,.2f", income));
         report.put("line1", line1);
         report.put("line2", line2);
         report.put("line3",line3);

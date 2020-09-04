@@ -49,7 +49,6 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 name.text = p0.child("displayName").value.toString()
                 val email:TextView = findViewById(R.id.header_email)
                 email.text = p0.child("email").value.toString()
-                val profilePic = findViewById<ImageView>(R.id.header_profile_pic)
             }
         })
         navigationView = findViewById(R.id.navigationView)
@@ -66,24 +65,23 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         val bitmap = (drawable as BitmapDrawable).bitmap
         val newdrawable: Drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, 50, 50, true))
         supportActionBar?.setHomeAsUpIndicator(newdrawable) //Attributed to FreePik on flaticon.com
-        supportActionBar!!.title = "Summary"
-        loadFragment(R.id.fragment_container,summaryFragment, "summary")
+        loadFragment(R.id.fragment_container,summaryFragment, "Summary")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment, "summary")
+            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment, "Summary")
 
-            R.id.exp_button -> loadFragment(R.id.fragment_container,expendatureFragment, "expendature")
+            R.id.exp_button -> loadFragment(R.id.fragment_container,expendatureFragment, "Expendatures")
 
-            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "report")
+            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "Reports")
 
-            R.id.save_button -> loadFragment(R.id.fragment_container,savingsFragment, "savings")
+            R.id.save_button -> loadFragment(R.id.fragment_container,savingsFragment, "Savings")
 
             R.id.settings -> {
                 supportActionBar!!.title = "Settings"
-                loadFragment(R.id.fragment_container, settingsFragment, "settings")
+                loadFragment(R.id.fragment_container, settingsFragment, "Settings")
             }
 
         }
@@ -91,7 +89,9 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         return true
     }
     fun loadFragment(id : Int, f : Fragment, tag:String) {
+        supportActionBar!!.title = tag
         supportFragmentManager.beginTransaction().replace(id, f,tag).commit()
+        MainActivity.fragmentManager = supportFragmentManager
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<out String>,grantResults: IntArray) {

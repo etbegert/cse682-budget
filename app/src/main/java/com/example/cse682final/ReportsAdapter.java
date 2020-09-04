@@ -3,6 +3,7 @@ package com.example.cse682final;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +24,13 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
         public TextView report_name;
         public TextView report_date;
         public TextView report_type;
+        public ImageButton delete_button;
         public ViewHolder (View view){
             super(view);
             report_name = (TextView)view.findViewById(R.id.report_name);
             report_date = (TextView)view.findViewById(R.id.report_date);
             report_type = (TextView)view.findViewById(R.id.report_type);
+            delete_button = (ImageButton)view.findViewById(R.id.delete_button);
         }
     }
 
@@ -63,6 +66,13 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
                                 reports.get(position).get("line3").toString());
                     }
                 }
+        });
+        holder.delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reports.remove(position);
+                updateList(reports);
+            }
         });
      }
     public void updateList(List<Map<String, ?>> postList) {
