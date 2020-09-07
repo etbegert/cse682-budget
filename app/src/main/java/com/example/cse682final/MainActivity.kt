@@ -1,10 +1,17 @@
 package com.example.cse682final
 
+import android.accounts.Account
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
@@ -13,11 +20,13 @@ class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
         var mContext: Context? = null
     }
     val REQUEST_CHECK_SETTINGS = 0x1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
         setContentView(R.layout.activity_main)
         super.onCreateDrawer()
+
         AccountInfo.reports = ArrayList()
     }
 

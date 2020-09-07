@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,14 +26,33 @@ import kotlin.system.exitProcess
 
 open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
+
+    // Grabs current user's account info
+    private val currentUser = FirebaseAuth.getInstance().currentUser
+    private var accountInfo = AccountInfo()
+    private var ref = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.uid!!).addListenerForSingleValueEvent(object: ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            accountInfo = snapshot.child("accountInfo").getValue(AccountInfo::class.java)!!
+            Log.d("AccountInfo request", "Request successful")
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            Log.d("AccountInfo request", "Request cancelled")
+        }
+    })
+    // Set up other class vars
     private var navigationView: NavigationView? = null
     private var drawerLayout: DrawerLayout? = null
     private var bottomNavigationView : BottomNavigationView? = null
-    private val currentUser = FirebaseAuth.getInstance().currentUser
     private val summaryFragment = SummaryFragment()
-    private val expendatureFragment = ExpenditureFragment()
+    private var expenditureFragment = ExpenditureFragment(accountInfo!!)
     private val reportFragment = ReportListFragment()
-    private val settingsFragment = SettingsFragment ()
+    private val settingsFragment = SettingsFragment()
+
+    fun saveAccountInfo(accInfo: AccountInfo) {
+        accountInfo = accInfo
+        Log.d("Account Info", "${accountInfo.toString()}")
+    }
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -74,7 +94,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         {
             R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment, "summary")
 
-            R.id.exp_button -> loadFragment(R.id.fragment_container,expendatureFragment, "expendature")
+            R.id.exp_button -> loadFragment(R.id.fragment_container, expenditureFragment!!, "expenditure")
 
             R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "report")
 
