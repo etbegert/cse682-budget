@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ExpenditureAdapter(var accountInfo: AccountInfo) : RecyclerView.Adapter<ExpenditureAdapter.ViewHolder>() {
+class ExpenditureAdapter(var expenditureList: ArrayList<Float>) : RecyclerView.Adapter<ExpenditureAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -21,10 +21,15 @@ class ExpenditureAdapter(var accountInfo: AccountInfo) : RecyclerView.Adapter<Ex
     }
 
     override fun onBindViewHolder(holder: ExpenditureAdapter.ViewHolder, position: Int) {
-        holder.expenditureValue.text = accountInfo.getExpenditure(position).toString()
+        holder.expenditureValue.text = expenditureList[position].toString()
     }
 
     override fun getItemCount(): Int {
-        return accountInfo.getExpenditures().size
+        return this.expenditureList.size
+    }
+
+    fun updateList(expenditureList: ArrayList<Float>) {
+        this.expenditureList = expenditureList
+        this.notifyDataSetChanged()
     }
 }

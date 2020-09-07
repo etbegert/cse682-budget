@@ -1,7 +1,6 @@
 package com.example.cse682final
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 
 class AccountInfo() {
@@ -22,17 +21,17 @@ class AccountInfo() {
         alerts = ArrayList<String>()
     }
 
-    constructor(inc: Int) : this() {
-        this.income = inc
+    constructor(income: Int) : this() {
+        this.income = income
     }
 
-    constructor(inc: Int, expenditures: ArrayList<Float>, expendTotal: Float, savings: HashMap<String, Float>, autoReports: HashMap<String, Int>, alertsList: ArrayList<String>) : this() {
-        this.income = inc
-        this.expenditureList = expenditures
-        this.expenditureTotal = expendTotal
-        this.savingsList = savings
-        this.autoReportsList = autoReports
-        this.alerts = alertsList
+    constructor(income: Int, expenditureList: ArrayList<Float>, expenditureTotal: Float, savingsList: HashMap<String, Float>, autoReportsList: HashMap<String, Int>, alerts: ArrayList<String>) : this() {
+        this.income = income
+        this.expenditureList = expenditureList
+        this.expenditureTotal = expenditureTotal
+        this.savingsList = savingsList
+        this.autoReportsList = autoReportsList
+        this.alerts = alerts
     }
 
     // Set the user's income
@@ -66,28 +65,17 @@ class AccountInfo() {
         updateDatabase()
     }
 
-    // Get the user's income
-    fun getInc(): Int {
-        return income
-    }
-
     // Get a specific expenditure
     fun getExpenditure(position: Int): Float {
         return expenditureList.get(position)
     }
-
-    fun getExpenditures(): ArrayList<Float> {
-        return expenditureList
-    }
-
 
     companion object {
         lateinit var reports: MutableList<MutableMap<String, *>>
     }
 
     // Get the user's alerts
-    @JvmName("getAlerts1")
-    fun getAlerts(): ArrayList<String> {
+    fun getAlertsFun(): ArrayList<String> {
         return alerts
     }
 
@@ -101,6 +89,6 @@ class AccountInfo() {
     }
 
     override fun toString(): String {
-        return "${currentUser?.displayName}\n ${this.income.toString()} \n ${this.expenditureList.toString()} \n ${this.expenditureTotal.toString()}"
+        return "\n${currentUser?.displayName}\n ${this.income.toString()} \n ${this.expenditureList.toString()} \n ${this.expenditureTotal.toString()}"
     }
 }

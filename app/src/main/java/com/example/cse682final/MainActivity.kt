@@ -26,7 +26,6 @@ class MainActivity : BasicDrawer(), ReportListFragment.OnItemSelectedListener{
         mContext = this
         setContentView(R.layout.activity_main)
         super.onCreateDrawer()
-
         AccountInfo.reports = ArrayList()
     }
 

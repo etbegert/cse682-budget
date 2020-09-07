@@ -30,29 +30,14 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     // Grabs current user's account info
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private var accountInfo = AccountInfo()
-    private var ref = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.uid!!).addListenerForSingleValueEvent(object: ValueEventListener {
-        override fun onDataChange(snapshot: DataSnapshot) {
-            accountInfo = snapshot.child("accountInfo").getValue(AccountInfo::class.java)!!
-            Log.d("AccountInfo request", "Request successful")
-        }
-
-        override fun onCancelled(error: DatabaseError) {
-            Log.d("AccountInfo request", "Request cancelled")
-        }
-    })
     // Set up other class vars
     private var navigationView: NavigationView? = null
     private var drawerLayout: DrawerLayout? = null
     private var bottomNavigationView : BottomNavigationView? = null
-    private val summaryFragment = SummaryFragment()
-    private var expenditureFragment = ExpenditureFragment(accountInfo!!)
-    private val reportFragment = ReportListFragment()
-    private val settingsFragment = SettingsFragment()
-
-    fun saveAccountInfo(accInfo: AccountInfo) {
-        accountInfo = accInfo
-        Log.d("Account Info", "${accountInfo.toString()}")
-    }
+    private var summaryFragment: SummaryFragment? = null
+    private var expenditureFragment: ExpenditureFragment? = null
+    private var reportFragment: ReportListFragment? = null
+    private var settingsFragment: SettingsFragment? = null
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -69,6 +54,13 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 val email:TextView = findViewById(R.id.header_email)
                 email.text = p0.child("email").value.toString()
                 val profilePic = findViewById<ImageView>(R.id.header_profile_pic)
+                val account = p0.child("accountInfo").getValue(AccountInfo::class.java)!!
+                this@BasicDrawer.accountInfo.income = account.income
+                this@BasicDrawer.accountInfo.expenditureTotal = account.expenditureTotal
+                this@BasicDrawer.accountInfo.expenditureList = account.expenditureList
+                this@BasicDrawer.accountInfo.savingsList = account.savingsList
+                this@BasicDrawer.accountInfo.autoReportsList = account.autoReportsList
+                this@BasicDrawer.accountInfo.alerts = account.alerts
             }
         })
         navigationView = findViewById(R.id.navigationView)
@@ -86,21 +78,27 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         val newdrawable: Drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, 50, 50, true))
         supportActionBar?.setHomeAsUpIndicator(newdrawable) //Attributed to FreePik on flaticon.com
         supportActionBar!!.title = "Summary"
-        loadFragment(R.id.fragment_container,summaryFragment, "summary")
+        //Create the fragments
+        summaryFragment = SummaryFragment()
+        expenditureFragment = ExpenditureFragment(accountInfo)
+        reportFragment = ReportListFragment()
+        settingsFragment = SettingsFragment()
+        Log.d("Check Account","${accountInfo.toString()}")
+        loadFragment(R.id.fragment_container,summaryFragment!!, "summary")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment, "summary")
+            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment!!, "summary")
 
             R.id.exp_button -> loadFragment(R.id.fragment_container, expenditureFragment!!, "expenditure")
 
-            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "report")
+            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment!!, "report")
 
             R.id.settings -> {
                 supportActionBar!!.title = "Settings"
-                loadFragment(R.id.fragment_container, settingsFragment, "settings")
+                loadFragment(R.id.fragment_container, settingsFragment!!, "settings")
             }
 
         }
