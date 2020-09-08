@@ -61,6 +61,8 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 this@BasicDrawer.accountInfo.savingsList = account.savingsList
                 this@BasicDrawer.accountInfo.reportsList = account.getReports()
                 this@BasicDrawer.accountInfo.alerts = account.alerts
+                this@BasicDrawer.accountInfo.savingsTotal = account.savingsTotal
+                this@BasicDrawer.accountInfo.billsTotal = account.billsTotal
                 loadFragment(R.id.fragment_container,summaryFragment!!, "Summary")
             }
 
@@ -85,7 +87,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         expenditureFragment = ExpenditureFragment(accountInfo)
         reportFragment = ReportListFragment(accountInfo)
         savingsFragment = SavingsFragment(accountInfo)
-        settingsFragment = SettingsFragment()
+        settingsFragment = SettingsFragment(accountInfo)
         Log.d("Check Account","${accountInfo.toString()}")
     }
 

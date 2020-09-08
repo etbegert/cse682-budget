@@ -32,7 +32,7 @@ class ExpenditureAdapter(val accountInfo: AccountInfo) : RecyclerView.Adapter<Ex
     }
 
     override fun onBindViewHolder(holder: ExpenditureAdapter.ViewHolder, position: Int) {
-        holder.expenditureValue.text = expenditureList[position].toString()
+        holder.expenditureValue.text = ("$" + String.format("%,.2f",expenditureList[position].toString().toFloat()))
         holder.expenditureDelete.setOnClickListener {
             accountInfo.deleteExpenditure(position)
             notifyDataSetChanged()

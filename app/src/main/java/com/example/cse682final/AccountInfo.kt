@@ -17,7 +17,8 @@ class AccountInfo() {
     var savingsList: MutableList<MutableMap<String, *>>
     var reportsList: MutableList<MutableMap<String, *>>
     var alerts: ArrayList<String>
-    var savingsTotal: Int
+    var savingsTotal: Float
+    var billsTotal: Float
 
     init {
         income = 0
@@ -26,7 +27,8 @@ class AccountInfo() {
         savingsList = ArrayList()
         reportsList = ArrayList()
         alerts = ArrayList<String>()
-        savingsTotal = 0
+        savingsTotal = 0F
+        billsTotal = 0F
     }
 
     constructor(income: Int) : this() {
@@ -39,7 +41,9 @@ class AccountInfo() {
         expenditureTotal: Float,
         savingsList: MutableList<MutableMap<String, *>>,
         reportsList: MutableList<MutableMap<String, *>>,
-        alerts: ArrayList<String>
+        alerts: ArrayList<String>,
+        savingsTotal: Float,
+        billsTotal: Float
     ) : this() {
         this.income = income
         this.expenditureList = expenditureList
@@ -47,6 +51,8 @@ class AccountInfo() {
         this.savingsList = savingsList
         this.reportsList = reportsList
         this.alerts = alerts
+        this.billsTotal = billsTotal
+        this.savingsTotal = savingsTotal
     }
 
     // Set the user's income

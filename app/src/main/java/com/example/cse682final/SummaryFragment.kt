@@ -20,12 +20,11 @@ class SummaryFragment(var accountInfo: AccountInfo) : Fragment() {
         val v = inflater.inflate(R.layout.summary_fragment, container, false)
         v.findViewById<TextView>(R.id.incomeDisplay).text = "$" + String.format("%,.2f",accountInfo.income.toFloat())
         v.findViewById<TextView>(R.id.expendituresDisplay).text = "$" + String.format("%,.2f",accountInfo.expenditureTotal)
-        v.findViewById<TextView>(R.id.versusDisplay).text = String.format("%,.2f",accountInfo.income/accountInfo.expenditureTotal) + "%"
+        v.findViewById<TextView>(R.id.versusDisplay).text = String.format("%,.2f",(accountInfo.expenditureTotal/accountInfo.income)*100) + "%"
         v.findViewById<TextView>(R.id.reportsDisplay).text = "${accountInfo.reportsList.size}"
         v.findViewById<TextView>(R.id.savingsDisplay).text = "$" + String.format("%,.2f",accountInfo.savingsTotal.toFloat())
-
-
-
+        v.findViewById<TextView>(R.id.billsDisplay).text = "$" + String.format("%,.2f",accountInfo.billsTotal.toFloat())
+        accountInfo.updateDatabase()
         return v
     }
 }

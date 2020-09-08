@@ -28,9 +28,7 @@ class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.expenditure_fragment, container, false)
-        v.findViewById<TextView>(R.id.expTotalIncome).text = accountInfo.income.toString()
-        v.findViewById<TextView>(R.id.expTotalExpenditures).text = accountInfo.expenditureTotal.toString()
-        v.findViewById<TextView>(R.id.expTotalRemaining).text = (accountInfo.income.toFloat() - accountInfo.expenditureTotal).toString()
+        updateDisplay()
         val rv = v.findViewById<RecyclerView>(R.id.expenditureRecycler)
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -44,6 +42,7 @@ class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
                 accountInfo.addExpenditure(v.findViewById<EditText>(R.id.expEntry).text.toString().toFloat())
                 recycleAdapter.updateList(accountInfo.expenditureList)
                 updateDisplay()
+                v.findViewById<EditText>(R.id.expEntry).text.clear()
             }
             else {
                 Toast.makeText(v.context, "Not a valid number, please try again.",Toast.LENGTH_SHORT).show()
@@ -54,9 +53,9 @@ class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
     }
 
     fun updateDisplay() {
-        v.findViewById<TextView>(R.id.expTotalIncome).text = accountInfo.income.toString()
-        v.findViewById<TextView>(R.id.expTotalExpenditures).text = accountInfo.expenditureTotal.toString()
-        v.findViewById<TextView>(R.id.expTotalRemaining).text = (accountInfo.income.toFloat() - accountInfo.expenditureTotal).toString()
+        v.findViewById<TextView>(R.id.expTotalIncome).text = "$" + String.format("%,.2f",accountInfo.income.toString().toFloat())
+        v.findViewById<TextView>(R.id.expTotalExpenditures).text = "$" + String.format("%,.2f",accountInfo.expenditureTotal.toString().toFloat())
+        v.findViewById<TextView>(R.id.expTotalRemaining).text = "$" + String.format("%,.2f",(accountInfo.income.toFloat() - accountInfo.expenditureTotal).toString().toFloat())
     }
 
 }
