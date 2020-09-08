@@ -31,7 +31,6 @@ class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.expenditure_fragment, container, false)
-        val expEntry = v.findViewById<EditText>(R.id.expEntry)
         v.findViewById<TextView>(R.id.expTotalIncome).text = accountInfo.income.toString()
         v.findViewById<TextView>(R.id.expTotalExpenditures).text = accountInfo.expenditureTotal.toString()
         v.findViewById<TextView>(R.id.expTotalRemaining).text = (accountInfo.income.toFloat() - accountInfo.expenditureTotal).toString()
@@ -42,7 +41,7 @@ class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
         rv.layoutManager = layoutManager
         rv.adapter = recycleAdapter
         rv.itemAnimator = DefaultItemAnimator()
-
+        val expEntry = v.findViewById<EditText>(R.id.expEntry)
         v.findViewById<Button>(R.id.expEntrySubmit).setOnClickListener {
             if(expEntry.text.toString() != "" && expEntry.text.toString().toFloatOrNull() != null) {
                 accountInfo.addExpenditure(v.findViewById<EditText>(R.id.expEntry).text.toString().toFloat())
@@ -52,6 +51,7 @@ class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
                 Toast.makeText(v.context, "Not a valid number, please try again.",Toast.LENGTH_SHORT).show()
             }
         }
+        recycleAdapter.updateList(accountInfo.expenditureList)
         return v
     }
 }
