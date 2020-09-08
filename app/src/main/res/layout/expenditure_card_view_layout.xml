@@ -4,27 +4,31 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:paddingEnd="4dp"
+        android:paddingStart="4dp">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textColor="@android:color/black"
-            android:id="@+id/expenditureValue"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_width="0dp"
+            android:layout_weight=".998"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:id="@+id/expenditure_value">
+        </TextView>
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintTop_toBottomOf="@id/expenditureValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageButton
+            android:id="@+id/expenditure_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight=".002"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@android:drawable/ic_delete">
+        </ImageButton>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>\
 
 </androidx.cardview.widget.CardView>

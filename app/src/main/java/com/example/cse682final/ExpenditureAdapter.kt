@@ -4,24 +4,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.RecyclerView
 
-class ExpenditureAdapter(var expenditureList: ArrayList<Float>) : RecyclerView.Adapter<ExpenditureAdapter.ViewHolder>() {
-
+class ExpenditureAdapter(val accountInfo: AccountInfo) : RecyclerView.Adapter<ExpenditureAdapter.ViewHolder>() {
+    var expenditureList: ArrayList<Float>
+    init {
+        expenditureList = accountInfo.expenditureList
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var expenditureValue: TextView = view.findViewById<TextView>(R.id.expenditureValue)
+        val expenditureValue: TextView = view.findViewById(R.id.expenditure_value)
+        val expenditureDelete: AppCompatImageButton = view.findViewById(R.id.expenditure_delete)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ExpenditureAdapter.ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.expenditure_card_view_layout, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.expenditure_card_view_layout,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ExpenditureAdapter.ViewHolder, position: Int) {
         holder.expenditureValue.text = expenditureList[position].toString()
+        holder.expenditureDelete.setOnClickListener {
+            accountInfo.deleteExpenditure(position)
+            notifyDataSetChanged()
+            val savingsFragment = MainActivity.fragmentManager.findFragmentByTag("Expenditures") as ExpenditureFragment
+            savingsFragment.updateDisplay()
+        }
     }
 
     override fun getItemCount(): Int {

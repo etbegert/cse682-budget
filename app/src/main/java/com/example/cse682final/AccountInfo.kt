@@ -61,6 +61,12 @@ class AccountInfo() {
         updateDatabase()
     }
 
+    fun deleteExpenditure(position: Int) {
+        this.expenditureTotal -= this.expenditureList[position]
+        this.expenditureList.removeAt(position)
+        updateDatabase()
+    }
+
     // Add the user's savings
     fun addSavings(savings :HashMap<String, Serializable>) {
         this.savingsList.add(savings)
