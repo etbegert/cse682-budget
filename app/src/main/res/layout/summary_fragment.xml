@@ -5,75 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/summaryFAB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:srcCompat="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
-
     <TextView
         android:id="@+id/incomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Income"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/incomeDisplay"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="30dp"/>
 
     <TextView
         android:id="@+id/expendituresTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Total Expenditures"
         app:layout_constraintTop_toBottomOf="@id/incomeTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/expendituresDisplay"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"/>
 
     <TextView
         android:id="@+id/versusTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Percent of Income Spent"
         app:layout_constraintTop_toBottomOf="@id/expendituresTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/versusDisplay"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"/>
 
     <TextView
         android:id="@+id/reportsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Number of Reports"
         app:layout_constraintTop_toBottomOf="@id/versusTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/versusDisplay"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"/>
 
     <TextView
         android:id="@+id/savingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Total Savings"
         app:layout_constraintTop_toBottomOf="@id/reportsTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/reportsDisplay"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="30dp"/>
 
     <TextView
         android:id="@+id/incomeDisplay"
@@ -81,11 +71,11 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/incomeTitle"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:id="@+id/expendituresDisplay"
@@ -93,11 +83,11 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintTop_toBottomOf="@id/incomeTitle"
-        app:layout_constraintStart_toEndOf="@id/incomeTitle"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:id="@+id/versusDisplay"
@@ -105,11 +95,11 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintTop_toBottomOf="@id/expendituresTitle"
-        app:layout_constraintStart_toEndOf="@id/incomeTitle"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:id="@+id/reportsDisplay"
@@ -117,11 +107,11 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintTop_toBottomOf="@id/versusTitle"
-        app:layout_constraintStart_toEndOf="@id/incomeTitle"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:id="@+id/savingsDisplay"
@@ -129,10 +119,10 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintTop_toBottomOf="@id/reportsTitle"
-        app:layout_constraintStart_toEndOf="@id/savingsTitle"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="20dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

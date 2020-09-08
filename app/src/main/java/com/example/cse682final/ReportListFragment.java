@@ -22,8 +22,14 @@ public class ReportListFragment extends Fragment {
         public void onListItemSelected(View sharedView, String income,String date,String type,String line1,String line2,String line3);
     }
     private final int NEW_REPORT_ACTIVITY = 13;
+    public static AccountInfo accountInfo;
     OnItemSelectedListener clickListener;
-    private final ReportsAdapter myRecyclerAdaptor=new ReportsAdapter(AccountInfo.reports);
+    private ReportsAdapter myRecyclerAdaptor;
+    public ReportListFragment(AccountInfo accountInfo)
+    {
+        this.accountInfo = accountInfo;
+        myRecyclerAdaptor = new ReportsAdapter(accountInfo.getReportsList());
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -46,7 +52,7 @@ public class ReportListFragment extends Fragment {
                 startActivityForResult(newReport,NEW_REPORT_ACTIVITY);
             }
         });
-        myRecyclerAdaptor.updateList(AccountInfo.reports);
+        myRecyclerAdaptor.updateList(accountInfo.getReportsList());
 
         return rootView;
     }
@@ -64,7 +70,7 @@ public class ReportListFragment extends Fragment {
     }
     @Override
     public void onResume() {
-        myRecyclerAdaptor.updateList(AccountInfo.reports);
+        myRecyclerAdaptor.updateList(accountInfo.getReportsList());
         super.onResume();
     }
 

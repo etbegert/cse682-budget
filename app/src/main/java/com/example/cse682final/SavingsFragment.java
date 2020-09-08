@@ -21,9 +21,14 @@ import org.jetbrains.annotations.NotNull;
 public class SavingsFragment extends Fragment {
 
     private final int NEW_SAVINGS_ACTIVITY = 13;
-    private final SavingsAdapter myRecyclerAdaptor=new SavingsAdapter(AccountInfo.savings);
+    private SavingsAdapter myRecyclerAdaptor;
     private TextView totalSavings = null;
-
+    public static AccountInfo accountInfo;
+    public SavingsFragment(AccountInfo accountInfo)
+    {
+        this.accountInfo = accountInfo;
+        myRecyclerAdaptor=new SavingsAdapter(accountInfo.getSavingsList());
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -47,7 +52,7 @@ public class SavingsFragment extends Fragment {
                 startActivityForResult(newSavings,NEW_SAVINGS_ACTIVITY);
             }
         });
-        myRecyclerAdaptor.updateList(AccountInfo.savings);
+        myRecyclerAdaptor.updateList(accountInfo.getSavingsList());
 
         totalSavings = (TextView) rootView.findViewById(R.id.total_savings);
         updateTotal();
@@ -60,24 +65,25 @@ public class SavingsFragment extends Fragment {
 
     @Override
     public void onResume() {
-        myRecyclerAdaptor.updateList(AccountInfo.savings);
+        myRecyclerAdaptor.updateList(accountInfo.getSavingsList());
         updateTotal();
-        Log.d("DEBUG","Total savings is " + AccountInfo.savingsTotal);
+        Log.d("DEBUG","Total savings is " + accountInfo.getSavingsTotal());
         super.onResume();
     }
 
     public int getTotalSavings(){
         int total = 0;
-        for (int i = 0; i < AccountInfo.savings.size(); i++)
+        for (int i = 0; i < accountInfo.getSavingsList().size(); i++)
         {
-            total = total + Integer.parseInt(AccountInfo.savings.get(i).get("amount").toString().replace("$",""));
+            total = total + Integer.parseInt(accountInfo.getSavingsList().get(i).get("amount").toString().replace("$",""));
         }
         return total;
     }
     public void updateTotal(){
 
-        AccountInfo.savingsTotal = getTotalSavings();
-        totalSavings.setText("Total: $" + String.format("%,.2f",Float.parseFloat(AccountInfo.savingsTotal.toString())));
+        accountInfo.setSavingsTotal(getTotalSavings());
+        totalSavings.setText("Total: $" + String.format("%,.2f",Float.parseFloat((String.valueOf(accountInfo.getSavingsTotal())))));
+        accountInfo.updateDatabase();
     }
 
 }

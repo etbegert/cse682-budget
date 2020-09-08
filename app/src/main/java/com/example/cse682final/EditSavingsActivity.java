@@ -14,6 +14,10 @@ import java.util.HashMap;
 
 public class EditSavingsActivity extends AppCompatActivity {
     private int position;
+    private AccountInfo accountInfo;
+    public EditSavingsActivity(){
+        this.accountInfo = SavingsFragment.accountInfo;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +35,9 @@ public class EditSavingsActivity extends AppCompatActivity {
         EditText savingsAmount = (EditText) findViewById(R.id.savings_amount);
         String amount = "$" + savingsAmount.getText().toString().replaceAll("[^\\d.]", "");
         HashMap<String, Serializable> account = new HashMap<>();
-        account.put("name",AccountInfo.savings.get(position).get("name").toString());
+        account.put("name",accountInfo.getSavingsList().get(position).get("name").toString());
         account.put("amount",amount);
-        AccountInfo.savings.set(position,account);
+        accountInfo.getSavingsList().set(position,account);
         finish();
     }
 }

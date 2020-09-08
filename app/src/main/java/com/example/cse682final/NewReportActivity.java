@@ -26,6 +26,10 @@ public class NewReportActivity extends AppCompatActivity {
     private float income;
     private float bills;
     private float expenditures;
+    private AccountInfo accountInfo;
+    public NewReportActivity(){
+        this.accountInfo = ReportListFragment.accountInfo;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +40,9 @@ public class NewReportActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         date = android.text.format.DateFormat.format("yyyy-MM-dd hh:mm a", new java.util.Date()).toString();
-        income = 50000; //TODO: Pull from account info
+        income = accountInfo.getIncome();
         bills = 400; //TODO: Pull from account info
-        expenditures = 300; //TODO: Pull from account info
+        expenditures = accountInfo.getExpenditureTotal();
 
     }
 
@@ -72,7 +76,8 @@ public class NewReportActivity extends AppCompatActivity {
         String line1 = "Percentage of income spent on bills monthly: " + String.format("%.2f", percentage) + "%";
         String line2 = "Amount spent on bills if percentage is halved: $" + String.format("%,.2f", tip1);
         String line3 = "Amount spent on bills if percentage is quartered: $" + String.format("%,.2f", tip2);
-        AccountInfo.reports.add(createReport("Income to Bills", line1, line2, line3));
+        accountInfo.getReportsList().add(createReport("Income to Bills", line1, line2, line3));
+        accountInfo.setReports(accountInfo.getReportsList());
     }
     private void genIncomeExpend()
     {
@@ -82,15 +87,17 @@ public class NewReportActivity extends AppCompatActivity {
         String line1 = "Percentage of income spent on expenditures monthly: " + String.format("%.2f", percentage) + "%";
         String line2 = "Amount spent on expenditures if percentage is halved: $" + String.format("%,.2f", tip1);
         String line3 = "Amount spent on expenditures if percentage is quartered: $" + String.format("%,.2f", tip2);
-        AccountInfo.reports.add(createReport("Income to Expenditure", line1, line2, line3));
+        accountInfo.getReportsList().add(createReport("Income to Expenditure", line1, line2, line3));
+        accountInfo.setReports(accountInfo.getReportsList());
     }
     private void genSavings()
     {
-        float tip1 = (float) ((income * .1) + AccountInfo.savingsTotal);
-        float tip2 = (float) ((income * .2) + AccountInfo.savingsTotal);
+        float tip1 = (float) ((income * .1) + accountInfo.getSavingsTotal());
+        float tip2 = (float) ((income * .2) + accountInfo.getSavingsTotal());
         String line1 = "Your total savings will be a balance of $" + String.format("%,.2f", tip1) + " in one year if 10% of income is saved";
         String line2 = "Your total savings will be a balance of $" + String.format("%,.2f", tip2) + " in one year if 20% of income is saved";
-        AccountInfo.reports.add(createReport("Savings Projection", line1, line2, ""));
+        accountInfo.getReportsList().add(createReport("Savings Projection", line1, line2, ""));
+        accountInfo.setReports(accountInfo.getReportsList());
     }
     private HashMap<String, Serializable> createReport(String type, String line1, String line2, String line3) {
         HashMap<String, java.io.Serializable> report = new HashMap<>();

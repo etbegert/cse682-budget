@@ -2,6 +2,11 @@ package com.example.cse682final
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.io.Serializable
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.MutableList
+import kotlin.collections.MutableMap
 
 class AccountInfo() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
@@ -9,28 +14,38 @@ class AccountInfo() {
     var income: Int
     var expenditureList: ArrayList<Float>
     var expenditureTotal : Float
-    var savingsList: HashMap<String, Float>
-    var autoReportsList = HashMap<String, Int>()
+    var savingsList: MutableList<MutableMap<String, *>>
+    var reportsList: MutableList<MutableMap<String, *>>
     var alerts: ArrayList<String>
+    var savingsTotal: Int
 
     init {
         income = 0
         expenditureList = ArrayList<Float>()
         expenditureTotal = 0F
-        savingsList = HashMap<String, Float>()
+        savingsList = ArrayList()
+        reportsList = ArrayList()
         alerts = ArrayList<String>()
+        savingsTotal = 0
     }
 
     constructor(income: Int) : this() {
         this.income = income
     }
 
-    constructor(income: Int, expenditureList: ArrayList<Float>, expenditureTotal: Float, savingsList: HashMap<String, Float>, autoReportsList: HashMap<String, Int>, alerts: ArrayList<String>) : this() {
+    constructor(
+        income: Int,
+        expenditureList: ArrayList<Float>,
+        expenditureTotal: Float,
+        savingsList: MutableList<MutableMap<String, *>>,
+        reportsList: MutableList<MutableMap<String, *>>,
+        alerts: ArrayList<String>
+    ) : this() {
         this.income = income
         this.expenditureList = expenditureList
         this.expenditureTotal = expenditureTotal
         this.savingsList = savingsList
-        this.autoReportsList = autoReportsList
+        this.reportsList = reportsList
         this.alerts = alerts
     }
 
@@ -39,7 +54,6 @@ class AccountInfo() {
         this.income = userIncome
         updateDatabase()
     }
-
     // Add the user's expenditure
     fun addExpenditure(expend: Float) {
         this.expenditureList.add(expend)
@@ -48,8 +62,8 @@ class AccountInfo() {
     }
 
     // Add the user's savings
-    fun addSavings(savingName: String, saving: Float) {
-        this.savingsList.put(savingName, saving)
+    fun addSavings(savings :HashMap<String, Serializable>) {
+        this.savingsList.add(savings)
         updateDatabase()
     }
 
@@ -60,8 +74,14 @@ class AccountInfo() {
     }
 
     // Add the user's auto reports
-    fun setAutoReports(autoReports: HashMap<String, Int>) {
-        this.autoReportsList = autoReports
+    fun setReports(reports: MutableList<MutableMap<String, *>>) {
+        this.reportsList = reports
+        updateDatabase()
+    }
+
+    // Add the user's auto reports
+    fun setSavings(savings: MutableList<MutableMap<String, *>>) {
+        this.savingsList = savings
         updateDatabase()
     }
 
@@ -70,18 +90,14 @@ class AccountInfo() {
         return expenditureList.get(position)
     }
 
-    companion object {
-        lateinit var reports: MutableList<MutableMap<String, *>>
-    }
-
     // Get the user's alerts
     fun getAlertsFun(): ArrayList<String> {
         return alerts
     }
 
     // Get the user's auto reports
-    fun getAutoReports(): HashMap<String, Int> {
-        return autoReportsList
+    fun getReports(): MutableList<MutableMap<String, *>> {
+        return reportsList
     }
 
     fun updateDatabase() {

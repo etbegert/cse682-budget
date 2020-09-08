@@ -59,6 +59,7 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 savings.remove(position);
+                SavingsFragment.accountInfo.setSavings(savings);
                 updateList(savings);
             }
         });

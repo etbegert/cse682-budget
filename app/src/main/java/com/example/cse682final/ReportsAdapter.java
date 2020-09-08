@@ -71,6 +71,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 reports.remove(position);
+                ReportListFragment.accountInfo.setReports(reports);
                 updateList(reports);
             }
         });

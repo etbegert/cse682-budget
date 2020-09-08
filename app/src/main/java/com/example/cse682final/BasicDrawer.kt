@@ -38,6 +38,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     private var expenditureFragment: ExpenditureFragment? = null
     private var reportFragment: ReportListFragment? = null
     private var settingsFragment: SettingsFragment? = null
+    private var savingsFragment:SavingsFragment? = null
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -53,15 +54,16 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 name.text = p0.child("displayName").value.toString()
                 val email:TextView = findViewById(R.id.header_email)
                 email.text = p0.child("email").value.toString()
-                val profilePic = findViewById<ImageView>(R.id.header_profile_pic)
                 val account = p0.child("accountInfo").getValue(AccountInfo::class.java)!!
                 this@BasicDrawer.accountInfo.income = account.income
                 this@BasicDrawer.accountInfo.expenditureTotal = account.expenditureTotal
                 this@BasicDrawer.accountInfo.expenditureList = account.expenditureList
                 this@BasicDrawer.accountInfo.savingsList = account.savingsList
-                this@BasicDrawer.accountInfo.autoReportsList = account.autoReportsList
+                this@BasicDrawer.accountInfo.reportsList = account.getReports()
                 this@BasicDrawer.accountInfo.alerts = account.alerts
+                loadFragment(R.id.fragment_container,summaryFragment!!, "Summary")
             }
+
         })
         navigationView = findViewById(R.id.navigationView)
         navigationView?.setNavigationItemSelectedListener(this)
@@ -79,26 +81,28 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         supportActionBar?.setHomeAsUpIndicator(newdrawable) //Attributed to FreePik on flaticon.com
         supportActionBar!!.title = "Summary"
         //Create the fragments
-        summaryFragment = SummaryFragment()
+        summaryFragment = SummaryFragment(accountInfo)
         expenditureFragment = ExpenditureFragment(accountInfo)
-        reportFragment = ReportListFragment()
+        reportFragment = ReportListFragment(accountInfo)
+        savingsFragment = SavingsFragment(accountInfo)
         settingsFragment = SettingsFragment()
         Log.d("Check Account","${accountInfo.toString()}")
-        loadFragment(R.id.fragment_container,summaryFragment!!, "summary")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment!!, "summary")
+            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment!!, "Summary")
 
-            R.id.exp_button -> loadFragment(R.id.fragment_container, expenditureFragment!!, "expenditure")
+            R.id.exp_button -> loadFragment(R.id.fragment_container,expenditureFragment!!, "Expenditures")
 
-            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment!!, "report")
+            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment!!, "Reports")
+
+            R.id.save_button -> loadFragment(R.id.fragment_container,savingsFragment!!, "Savings")
 
             R.id.settings -> {
                 supportActionBar!!.title = "Settings"
-                loadFragment(R.id.fragment_container, settingsFragment!!, "settings")
+                loadFragment(R.id.fragment_container, settingsFragment!!, "Settings")
             }
 
         }
@@ -106,7 +110,9 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         return true
     }
     fun loadFragment(id : Int, f : Fragment, tag:String) {
+        supportActionBar!!.title = tag
         supportFragmentManager.beginTransaction().replace(id, f,tag).commit()
+        MainActivity.fragmentManager = supportFragmentManager
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<out String>,grantResults: IntArray) {

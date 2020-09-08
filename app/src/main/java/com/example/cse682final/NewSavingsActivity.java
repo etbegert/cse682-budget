@@ -15,11 +15,10 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class NewSavingsActivity extends AppCompatActivity {
-    private Spinner spinner;
-    private String date;
-    private float income;
-    private float bills;
-    private float expenditures;
+    private AccountInfo accountInfo;
+    public NewSavingsActivity(){
+        this.accountInfo = SavingsFragment.accountInfo;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +33,13 @@ public class NewSavingsActivity extends AppCompatActivity {
         String amount = "$" + savingsAmount.getText().toString().replaceAll("[^\\d.]", "");
         if (amount.equals("$"))
             amount = "0";
-        AccountInfo.savings.add(createSavings(savingsName.getText().toString(),amount));
+        accountInfo.addSavings(createSavings(savingsName.getText().toString(),amount));
         finish();
     }
     private HashMap<String, Serializable> createSavings(String name, String amount) {
-        HashMap<String, Serializable> report = new HashMap<>();
-        report.put("name",name);
-        report.put("amount", amount);
-        return report;
+        HashMap<String, Serializable> savings = new HashMap<>();
+        savings.put("name",name);
+        savings.put("amount", amount);
+        return savings;
     }
 }
