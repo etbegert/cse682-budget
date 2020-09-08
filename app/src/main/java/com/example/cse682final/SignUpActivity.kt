@@ -65,12 +65,19 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun saveUserDataToDB() {
-        usersRef?.child(currentUser?.uid!!)?.setValue(
-            User(
-                display_name_signup.text.toString(),
-                email_signup.text.toString(),
-                currentUser?.uid!!.toString(),
-                AccountInfo(income_amount_signup.text as Int)
-            ))
+        try {
+            usersRef?.child(currentUser?.uid!!)?.setValue(
+                User(
+                    display_name_signup.text.toString(),
+                    email_signup.text.toString(),
+                    currentUser?.uid!!.toString(),
+                    AccountInfo(income_amount_signup.text.toString().toInt())
+                )
+            )
         }
+        catch(exp: Exception) {
+            Log.d("Database save", "Failed saving user info to database")
+            Toast.makeText(this, "Failed saving user info to database, check income.", Toast.LENGTH_LONG).show()
+        }
+    }
 }

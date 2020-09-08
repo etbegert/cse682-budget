@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     android:padding="20dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/icon_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/basic_avatar"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/text_holder"
-        android:layout_marginTop="20dp"/>
     <LinearLayout
         android:id="@+id/text_holder"
         android:layout_width="match_parent"

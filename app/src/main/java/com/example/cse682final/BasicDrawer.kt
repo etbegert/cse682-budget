@@ -4,6 +4,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,15 +26,18 @@ import kotlin.system.exitProcess
 
 open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
+
+    // Grabs current user's account info
+    private val currentUser = FirebaseAuth.getInstance().currentUser
+    private var accountInfo = AccountInfo()
+    // Set up other class vars
     private var navigationView: NavigationView? = null
     private var drawerLayout: DrawerLayout? = null
     private var bottomNavigationView : BottomNavigationView? = null
-    private val currentUser = FirebaseAuth.getInstance().currentUser
-    private val summaryFragment = SummaryFragment()
-    private val expendatureFragment = ExpenditureFragment()
-    private val reportFragment = ReportListFragment()
-    private val settingsFragment = SettingsFragment ()
-    private val savingsFragment = SavingsFragment()
+    private var summaryFragment: SummaryFragment? = null
+    private var expenditureFragment: ExpenditureFragment? = null
+    private var reportFragment: ReportListFragment? = null
+    private var settingsFragment: SettingsFragment? = null
 
     fun onCreateDrawer() {
         setContentView(R.layout.activity_main)
@@ -49,6 +53,14 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 name.text = p0.child("displayName").value.toString()
                 val email:TextView = findViewById(R.id.header_email)
                 email.text = p0.child("email").value.toString()
+                val profilePic = findViewById<ImageView>(R.id.header_profile_pic)
+                val account = p0.child("accountInfo").getValue(AccountInfo::class.java)!!
+                this@BasicDrawer.accountInfo.income = account.income
+                this@BasicDrawer.accountInfo.expenditureTotal = account.expenditureTotal
+                this@BasicDrawer.accountInfo.expenditureList = account.expenditureList
+                this@BasicDrawer.accountInfo.savingsList = account.savingsList
+                this@BasicDrawer.accountInfo.autoReportsList = account.autoReportsList
+                this@BasicDrawer.accountInfo.alerts = account.alerts
             }
         })
         navigationView = findViewById(R.id.navigationView)
@@ -65,23 +77,28 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         val bitmap = (drawable as BitmapDrawable).bitmap
         val newdrawable: Drawable = BitmapDrawable(resources, Bitmap.createScaledBitmap(bitmap, 50, 50, true))
         supportActionBar?.setHomeAsUpIndicator(newdrawable) //Attributed to FreePik on flaticon.com
-        loadFragment(R.id.fragment_container,summaryFragment, "Summary")
+        supportActionBar!!.title = "Summary"
+        //Create the fragments
+        summaryFragment = SummaryFragment()
+        expenditureFragment = ExpenditureFragment(accountInfo)
+        reportFragment = ReportListFragment()
+        settingsFragment = SettingsFragment()
+        Log.d("Check Account","${accountInfo.toString()}")
+        loadFragment(R.id.fragment_container,summaryFragment!!, "summary")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {
-            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment, "Summary")
+            R.id.summary_button -> loadFragment(R.id.fragment_container,summaryFragment!!, "summary")
 
-            R.id.exp_button -> loadFragment(R.id.fragment_container,expendatureFragment, "Expendatures")
+            R.id.exp_button -> loadFragment(R.id.fragment_container, expenditureFragment!!, "expenditure")
 
-            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment, "Reports")
-
-            R.id.save_button -> loadFragment(R.id.fragment_container,savingsFragment, "Savings")
+            R.id.report_button -> loadFragment(R.id.fragment_container,reportFragment!!, "report")
 
             R.id.settings -> {
                 supportActionBar!!.title = "Settings"
-                loadFragment(R.id.fragment_container, settingsFragment, "Settings")
+                loadFragment(R.id.fragment_container, settingsFragment!!, "settings")
             }
 
         }
@@ -89,9 +106,7 @@ open class BasicDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         return true
     }
     fun loadFragment(id : Int, f : Fragment, tag:String) {
-        supportActionBar!!.title = tag
         supportFragmentManager.beginTransaction().replace(id, f,tag).commit()
-        MainActivity.fragmentManager = supportFragmentManager
     }
 
     override fun onRequestPermissionsResult(requestCode: Int,permissions: Array<out String>,grantResults: IntArray) {
