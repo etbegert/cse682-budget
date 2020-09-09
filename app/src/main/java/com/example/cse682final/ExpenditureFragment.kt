@@ -17,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase
 
 class ExpenditureFragment(val accountInfo: AccountInfo) : Fragment() {
 
-    private val currentUser = FirebaseAuth.getInstance().currentUser
-    private var ref = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.uid!!)
     private val recycleAdapter = ExpenditureAdapter(accountInfo)
     private lateinit var v: View
 

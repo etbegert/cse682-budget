@@ -91,7 +91,7 @@ class AccountInfo() {
         updateDatabase()
     }
 
-    // Add the user's auto reports
+    // Set the user's savings list
     fun setSavings(savings: MutableList<MutableMap<String, *>>) {
         this.savingsList = savings
         updateDatabase()
