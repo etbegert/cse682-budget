@@ -11,7 +11,7 @@ import kotlin.collections.MutableMap
 class AccountInfo() {
     private val currentUser = FirebaseAuth.getInstance().currentUser
     private val userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.uid!!)
-    var income: Int
+    var income: Float
     var expenditureList: ArrayList<Float>
     var expenditureTotal : Float
     var savingsList: MutableList<MutableMap<String, *>>
@@ -21,7 +21,7 @@ class AccountInfo() {
     var billsTotal: Float
 
     init {
-        income = 0
+        income = 0F
         expenditureList = ArrayList<Float>()
         expenditureTotal = 0F
         savingsList = ArrayList()
@@ -31,12 +31,12 @@ class AccountInfo() {
         billsTotal = 0F
     }
 
-    constructor(income: Int) : this() {
+    constructor(income: Float) : this() {
         this.income = income
     }
 
     constructor(
-        income: Int,
+        income: Float,
         expenditureList: ArrayList<Float>,
         expenditureTotal: Float,
         savingsList: MutableList<MutableMap<String, *>>,
@@ -56,7 +56,7 @@ class AccountInfo() {
     }
 
     // Set the user's income
-    fun changeIncome(userIncome: Int) {
+    fun changeIncome(userIncome: Float) {
         this.income = userIncome
         updateDatabase()
     }

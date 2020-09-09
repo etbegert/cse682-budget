@@ -37,6 +37,7 @@
         app:layout_constraintTop_toBottomOf="@id/savings_name"
         app:layout_constraintLeft_toLeftOf="parent"
         android:hint="Savings Account Balance"
+        android:inputType="numberDecimal"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"/>
 

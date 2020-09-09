@@ -24,6 +24,7 @@
         <EditText
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:gravity="left"
             android:id="@+id/income"/>
     </LinearLayout>
@@ -43,6 +44,7 @@
         <EditText
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:gravity="left"
             android:id="@+id/bills"/>
     </LinearLayout>

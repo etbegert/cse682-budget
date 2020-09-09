@@ -50,7 +50,7 @@ class SettingsFragment(val accountInfo: AccountInfo) : Fragment() {
         if(billsEntry.text.toString() != "")
             accountInfo.billsTotal = billsEntry.text.toString().replace("[^\\d.]", "").toFloat()
         if(incomeEntry.text.toString() != "")
-            accountInfo.income = incomeEntry.text.toString().replace("[^\\d.]", "").toInt()
+            accountInfo.income = incomeEntry.text.toString().replace("[^\\d.]", "").toFloat()
         accountInfo.updateDatabase()
     }
 

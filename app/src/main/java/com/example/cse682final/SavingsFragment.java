@@ -71,11 +71,11 @@ public class SavingsFragment extends Fragment {
         super.onResume();
     }
 
-    public int getTotalSavings(){
-        int total = 0;
+    public float getTotalSavings(){
+        float total = 0;
         for (int i = 0; i < accountInfo.getSavingsList().size(); i++)
         {
-            total = total + Integer.parseInt(accountInfo.getSavingsList().get(i).get("amount").toString().replace("$",""));
+            total = total + Float.parseFloat(accountInfo.getSavingsList().get(i).get("amount").toString().replace("$",""));
         }
         return total;
     }
