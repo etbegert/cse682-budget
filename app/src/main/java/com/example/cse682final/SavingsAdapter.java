@@ -45,7 +45,8 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
     public void onBindViewHolder(final SavingsAdapter.ViewHolder holder, final int position)
     {
         holder.savings_name.setText(savings.get(position).get("name").toString());
-        holder.savings_name.setOnClickListener(new View.OnClickListener() {
+        /*Set up listener to edit savings amount on click of the balance*/
+        holder.savings_amount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.mContext,EditSavingsActivity.class);
@@ -54,7 +55,9 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
                 MainActivity.mContext.startActivity(myIntent);
             }
         });
+
         holder.savings_amount.setText("$"+String.format("%,.2f",Float.parseFloat(savings.get(position).get("amount").toString().replace("$",""))));
+        /*Set up listener to delete savings on click of the button*/
         holder.delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +67,7 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
             }
         });
      }
+    /*Pass in new savings list to update the adapter*/
     public void updateList(List<Map<String, ?>> postList) {
         this.savings = postList;
         SavingsFragment savingsFragment = (SavingsFragment) MainActivity.fragmentManager.findFragmentByTag("Savings");
@@ -77,11 +81,6 @@ public class SavingsAdapter extends RecyclerView.Adapter<SavingsAdapter.ViewHold
     @Override
     public int getItemCount() {
         return savings.size();
-    }
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView)
-    {
-
     }
 
 

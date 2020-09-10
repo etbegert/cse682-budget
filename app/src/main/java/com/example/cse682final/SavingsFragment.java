@@ -70,7 +70,7 @@ public class SavingsFragment extends Fragment {
         Log.d("DEBUG","Total savings is " + accountInfo.getSavingsTotal());
         super.onResume();
     }
-
+    /*Return the total value of the savings*/
     public float getTotalSavings(){
         float total = 0;
         for (int i = 0; i < accountInfo.getSavingsList().size(); i++)
@@ -79,6 +79,7 @@ public class SavingsFragment extends Fragment {
         }
         return total;
     }
+    /*Update the total savings amount*/
     public void updateTotal(){
 
         accountInfo.setSavingsTotal(getTotalSavings());

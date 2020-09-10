@@ -29,7 +29,7 @@ public class EditSavingsActivity extends AppCompatActivity {
         position = myIntent.getIntExtra("position",0);
 
     }
-
+/*Edits the parameters for the selected savings account*/
     public void editSavings(View v)
     {
         EditText savingsAmount = (EditText) findViewById(R.id.savings_amount);

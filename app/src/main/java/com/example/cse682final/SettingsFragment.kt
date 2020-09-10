@@ -44,7 +44,7 @@ class SettingsFragment(val accountInfo: AccountInfo) : Fragment() {
 
         return v
     }
-
+    /*Update bills and income when leaving the screen*/
     override fun onStop() {
         super.onStop()
         if(billsEntry.text.toString() != "")

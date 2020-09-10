@@ -45,7 +45,7 @@ public class NewReportActivity extends AppCompatActivity {
         expenditures = accountInfo.getExpenditureTotal();
 
     }
-
+/*Determines what is selected in the spinner and calls the function to generate that specific port */
     public void assignReport(View view)
     {
 
@@ -67,7 +67,7 @@ public class NewReportActivity extends AppCompatActivity {
         finish();
 
     }
-
+/*Generates the report for the percentage of income to bills*/
     private void genIncomeBills()
     {
         float percentage = (bills/(income/12)) * 100;
@@ -79,6 +79,7 @@ public class NewReportActivity extends AppCompatActivity {
         accountInfo.getReportsList().add(createReport("Income to Bills", line1, line2, line3));
         accountInfo.setReports(accountInfo.getReportsList());
     }
+/*Generates the report for the percentage of income to expenditures*/
     private void genIncomeExpend()
     {
         float percentage = (expenditures/(income/12)) * 100;
@@ -90,6 +91,7 @@ public class NewReportActivity extends AppCompatActivity {
         accountInfo.getReportsList().add(createReport("Income to Expenditure", line1, line2, line3));
         accountInfo.setReports(accountInfo.getReportsList());
     }
+/*Generates the report for the total savings*/
     private void genSavings()
     {
         float tip1 = (float) ((income * .1) + accountInfo.getSavingsTotal());
@@ -99,6 +101,7 @@ public class NewReportActivity extends AppCompatActivity {
         accountInfo.getReportsList().add(createReport("Savings Projection", line1, line2, ""));
         accountInfo.setReports(accountInfo.getReportsList());
     }
+/*Takes the data from each report and populates a report template*/
     private HashMap<String, Serializable> createReport(String type, String line1, String line2, String line3) {
         HashMap<String, java.io.Serializable> report = new HashMap<>();
         report.put("type",type);

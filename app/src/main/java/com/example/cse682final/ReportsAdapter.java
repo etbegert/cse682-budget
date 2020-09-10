@@ -34,7 +34,6 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
         }
     }
 
-
     public void setOnListItemClickListener(ReportListFragment.OnItemSelectedListener listener)
     {
         clickListener= listener;
@@ -53,6 +52,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
         holder.report_name.setText(name);
         holder.report_date.setText(reports.get(position).get("date").toString());
         holder.report_type.setText(reports.get(position).get("type").toString());
+        /*Set up listener to display report on click of the name*/
         holder.report_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +67,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
                     }
                 }
         });
+        /*Set up listener to delete report on click of the image*/
         holder.delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +77,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
             }
         });
      }
+     /*Pass in new report list to update the adapter*/
     public void updateList(List<Map<String, ?>> postList) {
         this.reports = postList;
         notifyDataSetChanged();
@@ -85,11 +87,4 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ViewHold
     public int getItemCount() {
         return reports.size();
     }
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView)
-    {
-
-    }
-
-
 }

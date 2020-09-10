@@ -30,6 +30,7 @@ public class ReportListFragment extends Fragment {
         this.accountInfo = accountInfo;
         myRecyclerAdaptor = new ReportsAdapter(accountInfo.getReportsList());
     }
+    /*Initialize the recycler view and adapter for the report list*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

@@ -21,7 +21,7 @@ public class ReportFragment extends Fragment {
         String line1 = getArguments().getString("line1");
         String line2 = getArguments().getString("line2");
         String line3 = getArguments().getString("line3");
-
+        /*Populate each view*/
         TextView t = rootView.findViewById(R.id.type);
         t.setText(type);
         TextView d = rootView.findViewById(R.id.date);

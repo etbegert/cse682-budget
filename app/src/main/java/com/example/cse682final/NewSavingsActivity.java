@@ -25,7 +25,7 @@ public class NewSavingsActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_new_savings);
     }
-
+    /*Gets called from the button press and collects the data in each field*/
     public void assignSavings(View v)
     {
         EditText savingsName = (EditText) findViewById(R.id.savings_name);
@@ -36,6 +36,7 @@ public class NewSavingsActivity extends AppCompatActivity {
         accountInfo.addSavings(createSavings(savingsName.getText().toString(),amount));
         finish();
     }
+    /*Takes the data that is passed to it and puts it in the hash map for a savings account*/
     private HashMap<String, Serializable> createSavings(String name, String amount) {
         HashMap<String, Serializable> savings = new HashMap<>();
         savings.put("name",name);
