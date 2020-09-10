@@ -33,6 +33,7 @@ class ExpenditureAdapter(val accountInfo: AccountInfo) : RecyclerView.Adapter<Ex
 
     override fun onBindViewHolder(holder: ExpenditureAdapter.ViewHolder, position: Int) {
         holder.expenditureValue.text = ("$" + String.format("%,.2f",expenditureList[position].toString().toFloat()))
+        // Deletes a given expenditure and updates the recyclerview and the fragment's totals
         holder.expenditureDelete.setOnClickListener {
             accountInfo.deleteExpenditure(position)
             notifyDataSetChanged()
@@ -45,6 +46,7 @@ class ExpenditureAdapter(val accountInfo: AccountInfo) : RecyclerView.Adapter<Ex
         return this.expenditureList.size
     }
 
+    // Updates the recycler view's list and the display
     fun updateList(expenditureList: ArrayList<Float>) {
         this.expenditureList = expenditureList
         this.notifyDataSetChanged()

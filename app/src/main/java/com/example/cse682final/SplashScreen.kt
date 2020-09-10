@@ -24,8 +24,8 @@ class SplashScreen : AppCompatActivity() {
         super.onResume()
         mAuth = FirebaseAuth.getInstance()
         currentUser = mAuth!!.currentUser
+        // Sets up a countdown timer to determine which activity to start when the app is loaded
         val countDown = object: CountDownTimer(3000, 1000) {
-
             override fun onFinish() {
                 if(currentUser == null) {
                     Toast.makeText(this@SplashScreen, "No user found.", Toast.LENGTH_SHORT).show()

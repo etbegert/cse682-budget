@@ -20,6 +20,7 @@ class AccountInfo() {
     var savingsTotal: Float
     var billsTotal: Float
 
+    // Initialize default (no parameter) AccountInfo instance
     init {
         income = 0F
         expenditureList = ArrayList<Float>()
@@ -31,10 +32,12 @@ class AccountInfo() {
         billsTotal = 0F
     }
 
+    // Initializes a basic version of the AccountInfo instance that only sets the income (used when a new user signs up for the app)
     constructor(income: Float) : this() {
         this.income = income
     }
 
+    // Constructs a new AccountInfo instance with all values set to parameters
     constructor(
         income: Float,
         expenditureList: ArrayList<Float>,

@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity(){
         signUpButton.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-        // Reset Button onClick
+        // Send a reset password email if email box is filled with valid email
         findViewById<Button>(R.id.reset_pass_button).setOnClickListener {
             if(email.text.toString() == "")
             {
@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity(){
                 Toast.makeText(this@LoginActivity, "If associated with an account, password reset email was sent to ${email.text}.", Toast.LENGTH_SHORT).show()
             }
         }
-        //Login onClick
+        // Logs in user with valid email and password
         findViewById<Button>(R.id.sign_in_button).setOnClickListener {
             if(email.text.toString() == "" || password.text.toString() == "") {
                 Toast.makeText(this, "Please provide all login information.", Toast.LENGTH_SHORT).show()

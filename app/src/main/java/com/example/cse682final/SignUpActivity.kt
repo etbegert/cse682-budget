@@ -40,6 +40,7 @@ class SignUpActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         usersRef = FirebaseDatabase.getInstance().getReference("Users")
         currentUser = mAuth?.currentUser
+        // Create new account when button is clicked and send email verification
         findViewById<Button>(R.id.create_account_button).setOnClickListener {
             if(email_signup.text.toString() == "" || password_signup.text.toString() == "") {
                 Toast.makeText(this, "Please fill out all required information.", Toast.LENGTH_SHORT).show()
@@ -64,6 +65,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    // Saves a User object with all relevant properties to FirebaseDatabase
     private fun saveUserDataToDB() {
         try {
             usersRef?.child(currentUser?.uid!!)?.setValue(
